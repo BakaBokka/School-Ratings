@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/School-Ratings/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/School-Ratings/static/js/main.44dbcf49.chunk.js",
+    "main.js.map": "/School-Ratings/static/js/main.44dbcf49.chunk.js.map",
+    "runtime-main.js": "/School-Ratings/static/js/runtime-main.4320c8f8.js",
+    "runtime-main.js.map": "/School-Ratings/static/js/runtime-main.4320c8f8.js.map",
+    "static/js/2.df2380ca.chunk.js": "/School-Ratings/static/js/2.df2380ca.chunk.js",
+    "static/js/2.df2380ca.chunk.js.map": "/School-Ratings/static/js/2.df2380ca.chunk.js.map",
+    "static/js/3.f118fbca.chunk.js": "/School-Ratings/static/js/3.f118fbca.chunk.js",
+    "static/js/3.f118fbca.chunk.js.map": "/School-Ratings/static/js/3.f118fbca.chunk.js.map",
+    "index.html": "/School-Ratings/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/School-Ratings/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.df2380ca.chunk.js.LICENSE.txt": "/School-Ratings/static/js/2.df2380ca.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4320c8f8.js",
+    "static/js/2.df2380ca.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.44dbcf49.chunk.js"
+  ]
+}
