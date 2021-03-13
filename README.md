@@ -3,7 +3,8 @@
 
 ****
 
-### Рейтинг школ Москвы, Питера и России. Сделано на React, TypeScript и Material UI. Также используется React Table и Yandex Map API.
+### Рейтинг школ Москвы, Питера и России.
+Сделано на React, TypeScript и Material UI. Также используется React Table и Yandex Map API.
 
 
 
