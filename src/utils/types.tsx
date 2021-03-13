@@ -26,4 +26,11 @@ export type Data = {
   columns: object[];
 }
 
+export type ModaData = {
+  title: string;
+  rate: string;
+  adress: string;
+  url: string;
+}
+
 export type TableType = "mos" | "spb" | "ru";

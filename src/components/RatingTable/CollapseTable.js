@@ -44,7 +44,7 @@ function CollapseTable({ open, branches }) {
                   <TableCell component="th" scope="row">
                     {branch.school}
                   </TableCell>
-                  <TableCell>{branch.adress}</TableCell>
+                  <TableCell>{branch.adress.adress}</TableCell>
                   <TableCell>{branch.area}</TableCell>
                   <TableCell>{branch.district}</TableCell>
                 </TableRow>

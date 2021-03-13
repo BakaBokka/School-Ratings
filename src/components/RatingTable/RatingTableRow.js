@@ -12,9 +12,17 @@ const useStyles = makeStyles({
     backgroundColor: "#e9e9e9",
     padding: "0",
   },
+  link: {
+    textDecoration: "none",
+    color: "#3f51b5",
+    transitionDuration: "0.6s",
+    '&:hover': {
+      color: '#212121'
+    }
+  },
 });
 
-function CollapserRow({ row }) {
+function RatingTableRow({ row }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const branches = row.original.branches;
@@ -30,7 +38,7 @@ function CollapserRow({ row }) {
         <TableCell>{row.original.rate20}</TableCell>
         <TableCell>{row.original.score}</TableCell>
         <TableCell>
-          <a href={row.original.url} target="__blank">{row.original.school}</a>
+          <a  className={classes.link} href={row.original.url} target="__blank">{row.original.school}</a>
           {branches ? (
             <IconButton
               aria-label="expand row"
@@ -41,7 +49,7 @@ function CollapserRow({ row }) {
             </IconButton>
           ) : null}
         </TableCell>
-        <TableCell>{row.original.adress}</TableCell>
+        <TableCell>{row.original.adress.adress}</TableCell>
         <TableCell>{row.original.area}</TableCell>
         <TableCell>{row.original.district}</TableCell>
         <TableCell>{row.original.rate19}</TableCell>
@@ -57,4 +65,4 @@ function CollapserRow({ row }) {
   );
 }
 
-export default CollapserRow;
+export default RatingTableRow;

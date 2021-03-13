@@ -11,7 +11,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import TableToolbar from "./TableToolbar";
-import CollapserRow from "./CollapserRow";
+import RatingTableRow from "./RatingTableRow";
 
 import {
   useGlobalFilter,
@@ -26,12 +26,14 @@ const useStyles = makeStyles({
   footer: {
 
     width: "100%",
+    borderBottom: "2px solid lightgray"
 
 
   },
 });
 
 const RatingTable = ({ columns, data }) => {
+  
   const classes = useStyles();
    const {
     getTableProps,
@@ -99,7 +101,7 @@ const RatingTable = ({ columns, data }) => {
             prepareRow(row);
 
             return (
-              <CollapserRow key={row.id} row={row}/>
+              <RatingTableRow key={row.id} row={row}/>
             );
           })}
         </TableBody>
