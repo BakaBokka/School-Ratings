@@ -1,9 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, {  useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { CssBaseline, Typography, Container } from "@material-ui/core";
+import { CssBaseline, Typography,  Container } from "@material-ui/core";
 import Header from "./components/Header/Header";
-import RatingTable from "./components/RatingTable/RatingTable";
-import RatingMap from "./components/RatingMap/RatingMap";
+import MoscowPage from "./components/Pages/MoscowPage";
 import { Data, TableType } from "./utils/types";
 
 const useStyles = makeStyles({
@@ -14,50 +13,29 @@ const useStyles = makeStyles({
 
     alignItems: "center",
   },
-  mapContainer: {
-    width: "50%",
-    height: "calc(50vw/1.33)",
-    margin: "30px",
-    position: "relative",
+  title: {
+    color: "#4f4f4f",
+    fontSize: "36px"
+  }
 
-  },
 });
 
 function Schools(props: { data: Data }) {
   const classes = useStyles();
   const [tableType, setTableType] = useState<TableType>("mos");
-  const [open, setOpen] = useState(false);
-
-  const handleModal = () => {
-    setOpen(!open);
-  };
-
-
-  const columns = useMemo(
-    () => props.data.columns,
-    // eslint-disable-next-line
-    []
-  );
-
-  const rows = useMemo(
-    () => props.data.schools,
-    // eslint-disable-next-line
-    []
-  );
   return (
     <div>
       <CssBaseline />
       <Container maxWidth="xl" className={classes.container}>
         <Header setTableType={setTableType} />
+        <Typography variant="h3" component="h1" className={classes.title}>
+        Рейтинг школ
+      </Typography>
         {tableType === "mos" ? (
-          <RatingTable columns={columns} data={rows}  />
+          <MoscowPage data={props.data} />
         ) : (
-          "Другая таблица"
+          "Скоро всё будет"
         )}
-        <div className={classes.mapContainer}>
-        <RatingMap data={props.data.schools} />
-        </div>
-
       </Container>
     </div>
   );

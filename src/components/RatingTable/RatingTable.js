@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MaUTable from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -23,6 +23,9 @@ import {
 
 
 const useStyles = makeStyles({
+  container: {
+      borderTop: "2px solid lightgray"
+  },
   footer: {
 
     width: "100%",
@@ -33,7 +36,7 @@ const useStyles = makeStyles({
 });
 
 const RatingTable = ({ columns, data }) => {
-  
+
   const classes = useStyles();
    const {
     getTableProps,
@@ -66,7 +69,7 @@ const RatingTable = ({ columns, data }) => {
 
   // Render the UI for your table
   return (
-    <TableContainer>
+    <TableContainer className={classes.container}>
       <TableToolbar
         numSelected={Object.keys(selectedRowIds).length}
         preGlobalFilteredRows={preGlobalFilteredRows}

@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import SchoolIcon from "@material-ui/icons/School";
+import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
 import { ModaData } from "../../utils/types";
 
 const useStyles = makeStyles({
@@ -56,7 +56,7 @@ function RatingMapModal(props: { handleModal: () => void; data: ModaData }) {
     >
       <div className={classes.paper}>
         <header className={classes.header}>
-          <SchoolIcon color={"disabled"} />
+          <SchoolRoundedIcon color={"disabled"} />
           <h3 id="simple-modal-title" className={classes.title}>
             {props.data.title}
           </h3>

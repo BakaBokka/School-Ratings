@@ -63,7 +63,7 @@ const GlobalFilter = ({
         onChange={e => {
           setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
         }}
-        placeholder={`${count} records...`}
+        placeholder={`${count} школ...`}
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,

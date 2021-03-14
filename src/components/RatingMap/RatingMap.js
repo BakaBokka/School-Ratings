@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import RatingMapModal from "./RatingMapModal";
 
@@ -14,9 +14,7 @@ function RatingMap({ data }) {
   const [modalData, setModalData] = useState({});
 
   const handleModal = (data) => {
-   
-    setModalData(data)
-
+    setModalData(data);
   };
 
   const placemarkElement = data.map((school) => {
@@ -24,12 +22,19 @@ function RatingMap({ data }) {
       <Placemark
         key={school.id}
         geometry={school.adress.coord}
-        onClick={() => handleModal({
-          title: school.school,
-          rate: school.rate20,
-          adress: school.adress.adress,
-          url: school.url
-        })}
+        properties={{iconCaption: school.school}}
+
+        options={{
+          preset: "islands#orangeStarCircleIcon",
+        }}
+        onClick={() =>
+          handleModal({
+            title: school.school,
+            rate: school.rate20,
+            adress: school.adress.adress,
+            url: school.url,
+          })
+        }
       />
     );
   });
@@ -50,13 +55,12 @@ function RatingMap({ data }) {
             controls: ["zoomControl", "fullscreenControl"],
           }}
           style={style}
-          modules={["geocode"]}
+          modules={["geocode", "layout.ImageWithContent"]}
         >
           {placemarkElement}
-          <RatingMapModal  handleModal={handleModal} data={modalData} />
+          <RatingMapModal handleModal={handleModal} data={modalData} />
         </Map>
       </div>
-
     </YMaps>
   );
 }
