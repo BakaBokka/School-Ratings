@@ -20,6 +20,9 @@ const useStyles = makeStyles({
       color: '#212121'
     }
   },
+  cell: {
+    height: "80px"
+  }
 });
 
 function RatingTableRow({ row }) {
@@ -34,10 +37,10 @@ function RatingTableRow({ row }) {
 
   return (
     <>
-      <TableRow>
-        <TableCell>{row.original.rate20}</TableCell>
+      <TableRow className={classes.cell}>
+        <TableCell >{row.original.rate20}</TableCell>
         <TableCell>{row.original.score}</TableCell>
-        <TableCell>
+        <TableCell width="20%">
           <a  className={classes.link} href={row.original.url} target="__blank">{row.original.school}</a>
           {branches ? (
             <IconButton
@@ -49,9 +52,9 @@ function RatingTableRow({ row }) {
             </IconButton>
           ) : null}
         </TableCell>
-        <TableCell>{row.original.adress.adress}</TableCell>
+        <TableCell  width="20%">{row.original.adress.adress}</TableCell>
         <TableCell>{row.original.area}</TableCell>
-        <TableCell>{row.original.district}</TableCell>
+        <TableCell width="20%">{row.original.district}</TableCell>
         <TableCell>{row.original.rate19}</TableCell>
         <TableCell>{row.original.rate18}</TableCell>
         <TableCell>{row.original.rate17}</TableCell>

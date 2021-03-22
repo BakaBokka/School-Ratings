@@ -21,24 +21,20 @@ import {
   useTable,
 } from "react-table";
 
-
 const useStyles = makeStyles({
   container: {
-      borderTop: "2px solid lightgray"
+    borderTop: "2px solid lightgray",
   },
+
   footer: {
-
     width: "100%",
-    borderBottom: "2px solid lightgray"
-
-
+    borderBottom: "2px solid lightgray",
   },
 });
 
 const RatingTable = ({ columns, data }) => {
-
   const classes = useStyles();
-   const {
+  const {
     getTableProps,
     headerGroups,
     prepareRow,
@@ -77,11 +73,12 @@ const RatingTable = ({ columns, data }) => {
         globalFilter={globalFilter}
       />
       <MaUTable {...getTableProps()}>
-        <TableHead>
+        <TableHead   >
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <TableCell
+
                   {...(column.id === "selection"
                     ? column.getHeaderProps()
                     : column.getHeaderProps(column.getSortByToggleProps()))}
@@ -103,14 +100,12 @@ const RatingTable = ({ columns, data }) => {
           {page.map((row) => {
             prepareRow(row);
 
-            return (
-              <RatingTableRow key={row.id} row={row}/>
-            );
+            return <RatingTableRow key={row.id} row={row} />;
           })}
         </TableBody>
 
         <TableFooter className={classes.footer}>
-          <TableRow >
+          <TableRow>
             <TablePagination
               rowsPerPageOptions={[
                 10,

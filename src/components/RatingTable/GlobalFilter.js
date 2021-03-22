@@ -47,6 +47,7 @@ const GlobalFilter = ({
   setGlobalFilter,
 }) => {
   const classes = useStyles()
+  // eslint-disable-next-line
   const count = preGlobalFilteredRows.length
 
   // Global filter only works with pagination from the first page.

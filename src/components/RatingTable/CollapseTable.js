@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     marginTop: "10px",
   },
+
 });
 
 function CollapseTable({ open, branches }) {
@@ -27,9 +28,9 @@ function CollapseTable({ open, branches }) {
         <Table size="small">
           <TableHead>
             <TableRow>
+              <TableCell ></TableCell>
               <TableCell></TableCell>
-              <TableCell></TableCell>
-              <TableCell className={classes.cell}>Филиал</TableCell>
+              <TableCell >Филиал</TableCell>
               <TableCell>Адрес</TableCell>
               <TableCell>Округ</TableCell>
               <TableCell>Район</TableCell>

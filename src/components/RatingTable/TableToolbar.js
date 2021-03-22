@@ -31,6 +31,7 @@ const useToolbarStyles = makeStyles((theme) => ({
   },
   customWidth: {
     maxWidth: "500px",
+    
   },
 }));
 

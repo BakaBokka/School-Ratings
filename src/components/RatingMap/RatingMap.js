@@ -18,25 +18,45 @@ function RatingMap({ data }) {
   };
 
   const placemarkElement = data.map((school) => {
-    return (
-      <Placemark
-        key={school.id}
-        geometry={school.adress.coord}
-        properties={{iconCaption: school.school}}
-
-        options={{
-          preset: "islands#orangeStarCircleIcon",
-        }}
-        onClick={() =>
-          handleModal({
-            title: school.school,
-            rate: school.rate20,
-            adress: school.adress.adress,
-            url: school.url,
-          })
-        }
-      />
-    );
+    if (school.rate20 === "топ 20") {
+      return (
+        <Placemark
+          key={school.id}
+          geometry={school.adress.coord}
+          properties={{ iconCaption: school.school }}
+          options={{
+            preset: "islands#orangeStarCircleIcon",
+          }}
+          onClick={() =>
+            handleModal({
+              title: school.school,
+              rate: school.rate20,
+              adress: school.adress.adress,
+              url: school.url,
+            })
+          }
+        />
+      );
+    } else {
+      return (
+        <Placemark
+          key={school.id}
+          geometry={school.adress.coord}
+          properties={{ iconCaption: school.school }}
+          options={{
+            preset: "islands#blueEducationCircleIcon",
+          }}
+          onClick={() =>
+            handleModal({
+              title: school.school,
+              rate: school.rate20,
+              adress: school.adress.adress,
+              url: school.url,
+            })
+          }
+        />
+      );
+    }
   });
 
   return (

@@ -3,20 +3,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   item: {
-   fontSize: "9px",
-   margin: 0
+    "& span, & svg": {
+      fontSize: "12px",
+      margin: 0,
+      padding: 0,
+    },
   },
-
 });
 
 function TableHelpTooltip() {
   const classes = useStyles();
 
   return (
-    <List >
-
+    <List>
       <ListItem className={classes.item}>
-        <ListItemText primary="• Введите что-нибудь в строку поиска для фильтрации данных" />
+        <ListItemText primary="• Ипользуйте строку поиска для фильтрации данных" />
       </ListItem>
       <ListItem className={classes.item}>
         <ListItemText primary="• Нажмите на шапку колонки для сортировки данных" />
