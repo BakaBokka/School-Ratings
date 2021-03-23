@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import RatingMapModal from "./RatingMapModal";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const style = {
   position: "absolute",
@@ -12,7 +13,7 @@ const style = {
 };
 function RatingMap({ data }) {
   const [modalData, setModalData] = useState({});
-
+  const [loading, setLoading] = useState(true);
   const handleModal = (data) => {
     setModalData(data);
   };
@@ -37,6 +38,27 @@ function RatingMap({ data }) {
           }
         />
       );
+    } else if (school.branches) {
+      return school.branches.map((branch) => {
+        return (
+          <Placemark
+            key={branch.id}
+            geometry={branch.adress.coord}
+            properties={{ iconCaption: branch.school }}
+            options={{
+              preset: "islands#greenBookCircleIcon",
+            }}
+            onClick={() =>
+              handleModal({
+                title: branch.school,
+                rate: school.rate20,
+                adress: branch.adress.adress,
+                url: school.url,
+              })
+            }
+          />
+        );
+      });
     } else {
       return (
         <Placemark
@@ -60,28 +82,33 @@ function RatingMap({ data }) {
   });
 
   return (
-    <YMaps
-      query={{
-        ns: "use-load-option",
-        load:
-          "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
-      }}
-    >
-      <div>
-        <Map
-          defaultState={{
-            center: [55.75, 37.57],
-            zoom: 11,
-            controls: ["zoomControl", "fullscreenControl"],
-          }}
-          style={style}
-          modules={["geocode", "layout.ImageWithContent"]}
-        >
-          {placemarkElement}
-          <RatingMapModal handleModal={handleModal} data={modalData} />
-        </Map>
-      </div>
-    </YMaps>
+    <>
+      {loading && <LinearProgress />}
+      <YMaps
+        query={{
+          ns: "use-load-option",
+          load:
+            "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
+        }}
+      >
+        <div>
+          <Map
+            defaultState={{
+              center: [55.75, 37.57],
+              zoom: 10,
+              controls: ["zoomControl", "fullscreenControl"],
+            }}
+            style={style}
+            modules={["geocode", "layout.ImageWithContent"]}
+            onLoad={() => setLoading(false)}
+          >
+            {placemarkElement}
+
+            <RatingMapModal handleModal={handleModal} data={modalData} />
+          </Map>
+        </div>
+      </YMaps>
+    </>
   );
 }
 

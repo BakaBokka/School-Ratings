@@ -98,6 +98,7 @@ const RatingTable = ({ columns, data }) => {
         </TableHead>
         <TableBody>
           {page.map((row) => {
+
             prepareRow(row);
 
             return <RatingTableRow key={row.id} row={row} />;
