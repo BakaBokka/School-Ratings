@@ -1,28 +1,21 @@
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {Paper, Tabs, Tab} from '@material-ui/core';
-import {TableType} from "../../utils/types";
-
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Paper, Tabs, Tab } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    marginBottom: "20px"
+    marginBottom: "20px",
   },
 });
 
- function Header(props: {setTableType: (tableType: TableType)=> void}) {
+function Header() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
-    console.log(newValue)
-    if(newValue === 0) {
-      props.setTableType("mos");
-    } else if(newValue === 1) {
-      props.setTableType("spb");
-    } else  props.setTableType("ru");
   };
 
   return (
@@ -33,15 +26,13 @@ const useStyles = makeStyles({
         indicatorColor="primary"
         textColor="primary"
         centered
-
       >
-        <Tab label="Школы Москвы" />
-        <Tab label="Школы Питера" />
-        <Tab label="Школы России" />
+        <Tab label="Школы Москвы" component={Link} to="/" />
+        <Tab label="Школы Питера" component={Link} to="/piter" />
+        {/* <Tab label="Школы России" /> */}
       </Tabs>
     </Paper>
   );
-
 }
 
 export default Header;

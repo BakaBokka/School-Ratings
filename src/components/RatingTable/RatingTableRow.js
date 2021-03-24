@@ -6,6 +6,7 @@ import CollapseTable from "./CollapseTable";
 import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles({
   collapsedCell: {
@@ -16,13 +17,13 @@ const useStyles = makeStyles({
     textDecoration: "none",
     color: "#3f51b5",
     transitionDuration: "0.6s",
-    '&:hover': {
-      color: '#212121'
-    }
+    "&:hover": {
+      color: "#212121",
+    },
   },
   cell: {
-    height: "80px"
-  }
+    height: "80px",
+  },
 });
 
 function RatingTableRow({ row }) {
@@ -38,10 +39,19 @@ function RatingTableRow({ row }) {
   return (
     <>
       <TableRow className={classes.cell}>
-        <TableCell >{row.original.rate20}</TableCell>
+        <TableCell>{row.original.rate20}</TableCell>
         <TableCell>{row.original.score}</TableCell>
-        <TableCell width="20%">
-          <a  className={classes.link} href={row.original.url} target="__blank">{row.original.school}</a>
+
+        <TableCell width="25%">
+          <Tooltip title={"Перейти на сайт"} placement="bottom">
+            <a
+              className={classes.link}
+              href={row.original.url}
+              target="__blank"
+            >
+              {row.original.school}
+            </a>
+          </Tooltip>
           {branches ? (
             <IconButton
               aria-label="expand row"
@@ -52,7 +62,8 @@ function RatingTableRow({ row }) {
             </IconButton>
           ) : null}
         </TableCell>
-        <TableCell  width="20%">{row.original.adress.adress}</TableCell>
+
+        <TableCell width="20%">{row.original.adress.adress}</TableCell>
         <TableCell>{row.original.area}</TableCell>
         <TableCell width="20%">{row.original.district}</TableCell>
         <TableCell>{row.original.rate19}</TableCell>

@@ -54,7 +54,7 @@ export const data = {
             "Московский Химический Лицей № 1303 (ЛГК на Юго-Востоке, здание № 13)",
           adress: {
             adress: "Таможенный проезд, дом 4",
-            coord: [55.751852, 37.67917],
+            coord: [55.751852, 37.679170],
           },
           area: "ЮВАО",
           district: "Лефортово",
@@ -765,7 +765,7 @@ export const data = {
       },
       area: "ЮВАО",
       district: "Люблино, Тексьтильщики",
-      url: "https://sch2010uv.mskobr.ru/info_edu/education#/",
+      url: "https://sch2010uv.mskobr.ru",
       branches: [
         {
           id: 1,
@@ -1800,23 +1800,23 @@ export const data = {
       url: "https://sch654.mskobr.ru",
 
     },
-    {
-      id: 100,
-      rate20: "топ 100",
-      rate19: "110",
-      rate18: "122",
-      rate17: "102",
-      score: "470",
-      school: "Школа № 1352",
-      adress: {
-        adress: "Щёлковское шоссе, дом 77А",
-        coord: [55.813329, 37.804072],
-      },
-      area: "ВАО",
-      district: "Гольяново",
-      url: "https://sch1352v.mskobr.ru",
+    // {
+    //   id: 100,
+    //   rate20: "топ 100",
+    //   rate19: "110",
+    //   rate18: "122",
+    //   rate17: "102",
+    //   score: "470",
+    //   school: "Школа № 1352",
+    //   adress: {
+    //     adress: "Щёлковское шоссе, дом 77А",
+    //     coord: [55.813329, 37.804072],
+    //   },
+    //   area: "ВАО",
+    //   district: "Гольяново",
+    //   url: "https://sch1352v.mskobr.ru",
 
-    },
+    // },
 
   ],
 
@@ -1835,7 +1835,7 @@ export const data = {
     },
     {
       Header: "Адрес",
-      accessor: "adress",
+      accessor: "adress.adress",
     },
     {
       Header: "Округ",

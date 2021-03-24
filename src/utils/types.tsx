@@ -33,4 +33,4 @@ export type ModaData = {
   url: string;
 }
 
-export type TableType = "mos" | "spb" | "ru";
+

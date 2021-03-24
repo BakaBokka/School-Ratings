@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import MaUTable from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-const RatingTable = ({ columns, data }) => {
+const RatingTable = ({ columns, data, setFilteredRows, setSchoolsOnMap }) => {
   const classes = useStyles();
   const {
     getTableProps,
@@ -43,6 +43,7 @@ const RatingTable = ({ columns, data }) => {
     setPageSize,
     preGlobalFilteredRows,
     setGlobalFilter,
+    rows,
     state: { pageIndex, pageSize, selectedRowIds, globalFilter },
   } = useTable(
     {
@@ -54,14 +55,21 @@ const RatingTable = ({ columns, data }) => {
     usePagination,
     useRowSelect
   );
-
+ 
   const handleChangePage = (event, newPage) => {
     gotoPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setPageSize(Number(event.target.value));
+    setSchoolsOnMap(Number(event.target.value))
   };
+
+  useEffect(() => {
+    setFilteredRows(rows)
+    // eslint-disable-next-line
+  }, [rows])
+
 
   // Render the UI for your table
   return (
@@ -73,15 +81,15 @@ const RatingTable = ({ columns, data }) => {
         globalFilter={globalFilter}
       />
       <MaUTable {...getTableProps()}>
-        <TableHead   >
+        <TableHead>
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <TableCell
-
                   {...(column.id === "selection"
                     ? column.getHeaderProps()
                     : column.getHeaderProps(column.getSortByToggleProps()))}
+                    title="Нажмите для сортировки"
                 >
                   {column.render("Header")}
                   {column.id !== "selection" ? (
@@ -98,7 +106,6 @@ const RatingTable = ({ columns, data }) => {
         </TableHead>
         <TableBody>
           {page.map((row) => {
-
             prepareRow(row);
 
             return <RatingTableRow key={row.id} row={row} />;

@@ -18,28 +18,55 @@ function RatingMap({ data }) {
     setModalData(data);
   };
 
+  console.log(data);
+
   const placemarkElement = data.map((school) => {
-    if (school.rate20 === "топ 20") {
+    if (school.original.rate20 === "топ 20") {
       return (
         <Placemark
-          key={school.id}
-          geometry={school.adress.coord}
-          properties={{ iconCaption: school.school }}
+        
+          key={school.original.id}
+          geometry={school.original.adress.coord}
+          properties={{ iconCaption: school.original.school }}
           options={{
             preset: "islands#orangeStarCircleIcon",
           }}
           onClick={() =>
             handleModal({
-              title: school.school,
-              rate: school.rate20,
-              adress: school.adress.adress,
-              url: school.url,
+              title: school.original.school,
+              rate: school.original.rate20,
+              adress: school.original.adress.adress,
+              url: school.original.url,
             })
           }
         />
       );
-    } else if (school.branches) {
-      return school.branches.map((branch) => {
+    } else {
+      return (
+        <Placemark
+          key={school.original.id}
+          geometry={school.original.adress.coord}
+          properties={{ iconCaption: school.original.school }}
+          options={{
+            preset: "islands#blueEducationCircleIcon",
+          }}
+          onClick={() =>
+            handleModal({
+              title: school.original.school,
+              rate: school.original.rate20,
+              adress: school.original.adress.adress,
+              url: school.original.url,
+            })
+          }
+        />
+      );
+    }
+  });
+
+  const placemarkBranchElement = data.map((school) => {
+    return (
+      school.original.branches &&
+      school.original.branches.map((branch) => {
         return (
           <Placemark
             key={branch.id}
@@ -51,34 +78,15 @@ function RatingMap({ data }) {
             onClick={() =>
               handleModal({
                 title: branch.school,
-                rate: school.rate20,
+                rate: school.original.rate20,
                 adress: branch.adress.adress,
-                url: school.url,
+                url: school.original.url,
               })
             }
           />
         );
-      });
-    } else {
-      return (
-        <Placemark
-          key={school.id}
-          geometry={school.adress.coord}
-          properties={{ iconCaption: school.school }}
-          options={{
-            preset: "islands#blueEducationCircleIcon",
-          }}
-          onClick={() =>
-            handleModal({
-              title: school.school,
-              rate: school.rate20,
-              adress: school.adress.adress,
-              url: school.url,
-            })
-          }
-        />
-      );
-    }
+      })
+    );
   });
 
   return (
@@ -95,7 +103,7 @@ function RatingMap({ data }) {
           <Map
             defaultState={{
               center: [55.75, 37.57],
-              zoom: 10,
+              zoom: 11,
               controls: ["zoomControl", "fullscreenControl"],
             }}
             style={style}
@@ -103,6 +111,7 @@ function RatingMap({ data }) {
             onLoad={() => setLoading(false)}
           >
             {placemarkElement}
+            {placemarkBranchElement}
 
             <RatingMapModal handleModal={handleModal} data={modalData} />
           </Map>
